@@ -1,0 +1,6 @@
+cert.pem
+key.pem
+notes.conf
+notes.sql
+pgdata
+*~

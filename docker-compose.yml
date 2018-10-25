@@ -1,0 +1,47 @@
+version: '3'
+services:
+  tls:
+    image: custom-nginx
+    ports:
+      - "14500:443"
+    depends_on:
+      - server
+  server:
+    image: postgrest/postgrest
+    ports:
+      - "14501:3000"
+    links:
+      - database:db
+    environment:
+      PGRST_DB_URI: postgres://postgres:password@db:5432/notes_db
+      # The database schema to expose to REST clients.
+      # Tables, views and stored procedures in this schema will get API endpoints.
+      PGRST_DB_SCHEMA: api
+      # The database role to use when executing commands on behalf of unauthenticated clients.
+      PGRST_DB_ANON_ROLE: web_anon
+      PGRST_JWT_SECRET: ${JWT_SECRET}
+      PGRST_JWT_AUD: notes
+      # JSON path within the JWT to the name of the database role
+      PGRST_ROLE_CLAIM_KEY: '."http://postgrest/role"'
+      # The JWT audience claim
+      PGRST_JWT_AUD: ${JWT_APP_ID}
+    depends_on:
+      - database
+  database:
+    image: postgres
+    ports:
+      - "14503:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: password
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "14502:8080"
+#    expose:
+#      - "8080"
+    environment:
+      API_URL: http://localhost:3000/
