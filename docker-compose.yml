@@ -6,6 +6,8 @@ services:
       - "14500:443"
     depends_on:
       - server
+    volumes:
+      - "./tls:/etc/tls/"
   server:
     image: postgrest/postgrest
     ports:

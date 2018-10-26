@@ -83,7 +83,8 @@ when doing this.
 
 Here we generate a self-signed certificate:
 
-    openssl req -x509 -newkey rsa:4096 -keyout docker-context/key.pem -out docker-context/cert.pem -days 365 -nodes
+    mkdir tls
+    openssl req -x509 -newkey rsa:4096 -keyout tls/key.pem -out tls/cert.pem -days 365 -nodes
 
 If you already have a certificate, make sure the filenames correspond to the configuration parameters in
 `docker-context/tls.conf`
