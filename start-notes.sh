@@ -1,3 +1,4 @@
+#!/bin/sh
 # Shell script to start PostgreSQL and PostgREST in docker containers.
 # Assumes docker-compose is installed.  Run this script as a user in the `docker` group.
 
