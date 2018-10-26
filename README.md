@@ -5,9 +5,16 @@
 This sets up a simple PostgREST application that uses Nginx for HTTPS encryption and [Auth0](https://auth0.com/)
 for authentication from 3rd party credential providers such as Google and Facebook.
 
-To use: install your TLS certificate and private key into the `docker-context` directory and configure the
-`notes.conf` file with your Auth0 application parameters.  Then build the custom Nginx Docker container and run
-`docker-compose` to start all the services.  Detailed start-to-finish instructions follow.
+## Quickstart
+
+1. `clone` the git repository
+2. run `build-docker.sh` script to configure Nginx
+3. Put TLS certifictate and key into `tls/`
+4. Put Auth0 credentials into `notes.conf`
+5. (_optional_) update `notes.conf` to refer to custom database definition file
+5. run `start-notes.sh`
+
+**Detailed start-to-finish instructions follow.**
 
 ## Install Docker
 
