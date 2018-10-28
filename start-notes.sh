@@ -26,7 +26,6 @@ else
     load_data=false
 fi
 
-
 docker-compose up --detach database
 until docker-compose exec database pg_isready; do
     echo "Waiting for postgres"

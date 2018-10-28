@@ -15,20 +15,15 @@ services:
     links:
       - database:db
     environment:
-      PGRST_DB_URI: postgres://postgres:password@db:5432/notes_db
-      # The database schema to expose to REST clients.
-      # Tables, views and stored procedures in this schema will get API endpoints.
-      PGRST_DB_SCHEMA: api
-      # The database role to use when executing commands on behalf of unauthenticated clients.
-      PGRST_DB_ANON_ROLE: web_anon
-      PGRST_JWT_SECRET: ${JWT_SECRET}
-      PGRST_JWT_AUD: notes
-      # JSON path within the JWT to the name of the database role
-      PGRST_ROLE_CLAIM_KEY: '."http://postgrest/role"'
-      # The JWT audience claim
       PGRST_JWT_AUD: ${JWT_APP_ID}
+      # Only necessary if using the `HS256` JsonWebToken signature algorithm
+      PGRST_JWT_SECRET: ${JWT_SECRET}
     depends_on:
       - database
+    volumes:
+      - "./postgrest.conf:/etc/postgrest.conf"
+      # Only necessary if using the `RS256` JsonWebToken signature algorithm
+      - "./auth0_rsa.pub:/etc/auth0_rsa.pub"
   database:
     image: postgres
     ports:

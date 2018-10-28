@@ -110,8 +110,14 @@ application we will create below `http://localhost:3000`.
 Under Advanced Settings > Application Metadata add a Key `role` whose value is
 the database role that PostgREST will use.  Here, we set Value to `notes_user`.
 
-Still in Advanced Settings, under _OAuth_ set the _JsonWebToken Signature Algorithm_
-to `HS256`.
+Alse in Advanced Settings, under _OAuth_ you can choose the _JsonWebToken Signature Algorithm_.
+The options are `RS256` and `HS256`.  Here we will use `RS256` but you can use `HS256` if you want.
+If you use `HS256` then you will copy the _Client Secret_ from the Auth0 website into the `notes.conf`
+file. If you use `RS256` then you will download the Auth0 RSA public key.  The format of the provided
+RSA key contains certains members that _PostgREST_ cannot read, so you must remove those.  Use the accompanying
+script and name the file `auth0_rsa.pub`:
+
+    ./auth0-pubkey.sh <auth0-subdomain> > auth0_rsa.pub
 
 ### Define a Rule to include the role in the JWT
 
@@ -126,6 +132,10 @@ to `HS256`.
 Rename the `notes.conf.example` file to `notes.conf` and set the Auth0 application parameters:
 
     export JWT_APP_ID=<Client Id>
+
+Only if you are using `HS256` signature algorithm you must also place the Auth0 application
+client secret in this file.  Name it `JWT_SECRET`.
+
     export JWT_SECRET=<Client Secret>
 
 ## Create a Javascript App to generate tokens
