@@ -23,7 +23,7 @@ services:
     volumes:
       - "./postgrest.conf:/etc/postgrest.conf"
       # Only necessary if using the `RS256` JsonWebToken signature algorithm
-      - "./auth0_rsa.pub:/etc/auth0_rsa.pub"
+      - "./auth0_pubkey.jwk:/etc/auth0_pubkey.jwk"
   database:
     image: postgres
     ports:

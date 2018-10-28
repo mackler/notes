@@ -1,6 +1,8 @@
-cert.pem
-key.pem
+*.pem
+*.jwk
+*.log
 notes.conf
 notes.sql
 pgdata
 *~
+trash

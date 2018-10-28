@@ -2,5 +2,5 @@
 DB_DEFINITION=example.sql
 # Set this to the Client ID of the Auth0 application
 export JWT_APP_ID=
-# Set this to the Client Secret of the Auth0 application
-export JWT_SECRET=
+# Set this to the Client Secret if using the HS256 JsonWebToken signature algorithm
+# export JWT_SECRET=

@@ -115,9 +115,9 @@ The options are `RS256` and `HS256`.  Here we will use `RS256` but you can use `
 If you use `HS256` then you will copy the _Client Secret_ from the Auth0 website into the `notes.conf`
 file. If you use `RS256` then you will download the Auth0 RSA public key.  The format of the provided
 RSA key contains certains members that _PostgREST_ cannot read, so you must remove those.  Use the accompanying
-script and name the file `auth0_rsa.pub`:
+script and name the file `auth0_pubkey.jwk`:
 
-    ./auth0-pubkey.sh <auth0-subdomain> > auth0_rsa.pub
+    ./auth0-pubkey.sh <auth0-subdomain> > auth0_pubkey.jwk
 
 ### Define a Rule to include the role in the JWT
 
