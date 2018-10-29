@@ -4,9 +4,6 @@
 
 # The name of the file containing the SQL commands to define & populate the database.
 CONF_FILE=./notes.conf
-export POSTGRES_USER=postgres
-export POSTGRES_DB=notes_db
-export POSTGRES_DATA=pgdata
 
 if [ -r $CONF_FILE ]
     then . $CONF_FILE

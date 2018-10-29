@@ -1,6 +1,11 @@
 # Set this to the name of the database definition file
 DB_DEFINITION=example.sql
+
 # Set this to the Client ID of the Auth0 application
 export JWT_APP_ID=
+
 # Set this to the Client Secret if using the HS256 JsonWebToken signature algorithm
 # export JWT_SECRET=
+
+export POSTGRES_USER=postgres
+export POSTGRES_DB=notes_db
