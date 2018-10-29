@@ -79,19 +79,11 @@ Go to https://github.com/docker/compose/releases and find the latest release.  H
 
     docker-compose --version
 
-### Build the custom NginX docker image:
-
-    docker build -t custom-nginx -f Dockerfile docker-context
-
-There is a script here named `build-docker.sh` that does the same thing.  Either way, be in the `docker` group
-when doing this.
-
 ## Install a TLS(SSL) certificate
 
 Here we generate a self-signed certificate:
 
-    mkdir tls
-    openssl req -x509 -newkey rsa:4096 -keyout tls/key.pem -out tls/cert.pem -days 365 -nodes
+    openssl req -x509 -newkey rsa:4096 -keyout tls_key.pem -out tls_cert.pem -days 365 -nodes
 
 If you already have a certificate, make sure the filenames correspond to the configuration parameters in
 `docker-context/tls.conf`
