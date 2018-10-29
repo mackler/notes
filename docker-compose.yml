@@ -27,7 +27,7 @@ services:
       # Only necessary if using the `RS256` JsonWebToken signature algorithm
       - "./auth0_pubkey.jwk:/etc/auth0_pubkey.jwk"
   database:
-    image: postgres
+    image: postgres:11.0
     ports:
       - "14503:5432"
     environment:
