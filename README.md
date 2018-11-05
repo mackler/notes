@@ -8,10 +8,9 @@ for authentication from 3rd party credential providers such as Google and Facebo
 ## Quickstart
 
 1. `clone` the git repository
-2. run `build-docker.sh` script to configure Nginx
-3. Put TLS certifictate and key into `tls/`
-4. Put Auth0 credentials into `notes.conf`
-5. (_optional_) update `notes.conf` to refer to custom database definition file
+2. Put TLS certifictate and key into `tls/`
+3. Put Auth0 credentials into `notes.conf`
+4. (_optional_) update `notes.conf` to refer to custom database definition file
 5. run `start-notes.sh`
 
 **Detailed start-to-finish instructions follow.**
