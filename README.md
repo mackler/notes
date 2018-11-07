@@ -8,10 +8,11 @@ for authentication from 3rd party credential providers such as Google and Facebo
 ## Quickstart
 
 1. `clone` the git repository
-2. Put TLS certifictate and key into `tls/`
-3. Put Auth0 credentials into `notes.conf`
-4. (_optional_) update `notes.conf` to refer to custom database definition file
-5. run `start-notes.sh`
+2. Put TLS certifictate and key into `tls_cert.pem` and `tls_key.pem`
+3. Save Auth0 public key as `auth0_pubkey.sh`
+4. Insert Auth0 application ID into `notes.conf` file
+5. (_optional_) update `notes.conf` to refer to custom database definition file
+6. run `start-notes.sh`
 
 **Detailed start-to-finish instructions follow.**
 
@@ -106,9 +107,9 @@ The options are `RS256` and `HS256`.  Here we will use `RS256` but you can use `
 If you use `HS256` then you will copy the _Client Secret_ from the Auth0 website into the `notes.conf`
 file. If you use `RS256` then you will download the Auth0 RSA public key.  The format of the provided
 RSA key contains certains members that _PostgREST_ cannot read, so you must remove those.  Use the accompanying
-script and name the file `auth0_pubkey.jwk`:
+script and name the file `token_signing_pubkey.jwk`:
 
-    ./auth0-pubkey.sh <auth0-subdomain> > auth0_pubkey.jwk
+    ./auth0-pubkey.sh <auth0-subdomain> > token_signing_pubkey.jwk
 
 ### Define a Rule to include the role in the JWT
 
