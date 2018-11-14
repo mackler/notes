@@ -5,12 +5,12 @@ services:
     ports:
       - "14500:443"
     depends_on:
-      - server
+      - application
     volumes:
       - "./tls.conf:/etc/nginx/conf.d/default.conf"
       - "./tls_cert.pem:/etc/nginx/tls_cert.pem"
       - "./tls_key.pem:/etc/nginx/tls_key.pem"
-  server:
+  application:
     image: postgrest/postgrest
     ports:
       - "14501:3000"
